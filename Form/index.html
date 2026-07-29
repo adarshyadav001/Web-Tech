@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Elements Skeleton</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  label {
+    font-weight: bold;
+    margin-bottom: 4px;
+    display: block;
+  }
+  input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  button {
+    padding: 10px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<h1>Form Elements Skeleton</h1>
+
+<form action="#" method="post">
+
+  <div>
+    <label for="text-field">Text</label>
+    <input type="text" id="text-field" name="text-field" placeholder="Enter text">
+  </div>
+
+  <div>
+    <label for="password-field">Password</label>
+    <input type="password" id="password-field" name="password-field" placeholder="Enter password">
+  </div>
+
+  <div>
+    <label for="email-field">Email</label>
+    <input type="email" id="email-field" name="email-field" placeholder="name@example.com">
+  </div>
+
+  <div>
+    <label for="number-field">Number</label>
+    <input type="number" id="number-field" name="number-field" placeholder="0">
+  </div>
+
+  <div>
+    <label for="tel-field">Phone</label>
+    <input type="tel" id="tel-field" name="tel-field" placeholder="+1 234 567 8900">
+  </div>
+
+  <div>
+    <label for="url-field">Website</label>
+    <input type="url" id="url-field" name="url-field" placeholder="https://example.com">
+  </div>
+
+  <div>
+    <label for="search-field">Search</label>
+    <input type="search" id="search-field" name="search-field" placeholder="Search...">
+  </div>
+
+  <div>
+    <label for="date-field">Date</label>
+    <input type="date" id="date-field" name="date-field">
+  </div>
+
+  <div>
+    <label for="time-field">Time</label>
+    <input type="time" id="time-field" name="time-field">
+  </div>
+
+  <button type="submit">Submit</button>
+
+</form>
+
+</body>
+</html>

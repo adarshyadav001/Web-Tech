@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume Entry Form</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 0 20px;
+    color: #222;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  p.subtitle {
+    text-align: center;
+    color: #666;
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+  fieldset {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  legend {
+    font-weight: bold;
+    font-size: 16px;
+    padding: 0 8px;
+    color: #333;
+  }
+  .row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  .field {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 14px;
+  }
+  label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+  input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+  }
+  textarea {
+    resize: vertical;
+    min-height: 70px;
+  }
+  .entry-block {
+    border: 1px dashed #bbb;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+  }
+  .entry-block h4 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: #555;
+  }
+  .checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .checkbox-row input {
+    width: auto;
+  }
+  .add-btn {
+    background: #eef2ff;
+    border: 1px solid #a3b3ff;
+    color: #2a3eb1;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    margin-top: 5px;
+  }
+  .remove-btn {
+    background: none;
+    border: none;
+    color: #c0392b;
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background: #2a3eb1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  button[type="submit"]:hover {
+    background: #1f2f8a;
+  }
+</style>
+</head>
+<body>
+
+<h1>Resume Builder</h1>
+<p class="subtitle">Fill in your details below</p>
+
+<form id="resume-form" action="#" method="post">
+
+  <!-- Personal Information -->
+  <fieldset>
+    <legend>Personal Information</legend>
+    <div class="row">
+      <div class="field">
+        <label for="first-name">First Name</label>
+        <input type="text" id="first-name" name="first-name" placeholder="John" required>
+      </div>
+      <div class="field">
+        <label for="last-name">Last Name</label>
+        <input type="text" id="last-name" name="last-name" placeholder="Doe" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="job-title">Desired Job Title</label>
+        <input type="text" id="job-title" name="job-title" placeholder="Software Engineer">
+      </div>
+      <div class="field">
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" name="dob">
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="name@example.com" required>
+      </div>
+      <div class="field">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" placeholder="+1 234 567 8900">
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="website">Website / Portfolio</label>
+        <input type="url" id="website" name="website" placeholder="https://yourportfolio.com">
+      </div>
+      <div class="field">
+        <label for="linkedin">LinkedIn</label>
+        <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/username">
+      </div>
+    </div>
+    <div class="field">
+      <label for="address">Address</label>
+      <input type="text" id="address" name="address" placeholder="Street, City, State, ZIP">
+    </div>
+    <div class="field">
+      <label for="summary">Professional Summary</label>
+      <textarea id="summary" name="summary" placeholder="A short summary about yourself..."></textarea>
+    </div>
+  </fieldset>
+
+  <!-- Education -->
+  <fieldset id="education-section">
+    <legend>Education</legend>
+
+    <div class="entry-block">
+      <button type="button" class="remove-btn" onclick="removeBlock(this)">Remove</button>
+      <h4>Education Entry</h4>
+      <div class="row">
+        <div class="field">
+          <label>School / University</label>
+          <input type="text" name="edu-school[]" placeholder="XYZ University">
+        </div>
+        <div class="field">
+          <label>Degree</label>
+          <input type="text" name="edu-degree[]" placeholder="B.Sc. Computer Science">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>Start Date</label>
+          <input type="date" name="edu-start[]">
+        </div>
+        <div class="field">
+          <label>End Date</label>
+          <input type="date" name="edu-end[]">
+        </div>
+        <div class="field">
+          <label>Grade / GPA</label>
+          <input type="text" name="edu-grade[]" placeholder="3.8 / 4.0">
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="add-btn" onclick="addBlock('education-section', educationTemplate)">+ Add Education</button>
+  </fieldset>
+
+  <!-- Work Experience -->
+  <fieldset id="experience-section">
+    <legend>Work Experience</legend>
+
+    <div class="entry-block">
+      <button type="button" class="remove-btn" onclick="removeBlock(this)">Remove</button>
+      <h4>Experience Entry</h4>
+      <div class="row">
+        <div class="field">
+          <label>Company</label>
+          <input type="text" name="exp-company[]" placeholder="ABC Corp">
+        </div>
+        <div class="field">
+          <label>Job Title</label>
+          <input type="text" name="exp-title[]" placeholder="Software Engineer">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>Start Date</label>
+          <input type="date" name="exp-start[]">
+        </div>
+        <div class="field">
+          <label>End Date</label>
+          <input type="date" name="exp-end[]">
+        </div>
+        <div class="field checkbox-row">
+          <input type="checkbox" name="exp-current[]" id="exp-current-1">
+          <label for="exp-current-1" style="margin:0;">I currently work here</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Description / Responsibilities</label>
+        <textarea name="exp-desc[]" placeholder="Describe your role and achievements..."></textarea>
+      </div>
+    </div>
+
+    <button type="button" class="add-btn" onclick="addBlock('experience-section', experienceTemplate)">+ Add Experience</button>
+  </fieldset>
+
+  <!-- Skills -->
+  <fieldset>
+    <legend>Skills</legend>
+    <div class="field">
+      <label for="skills">Skills (comma separated)</label>
+      <input type="text" id="skills" name="skills" placeholder="JavaScript, Python, Project Management">
+    </div>
+    <div class="field">
+      <label for="skill-level">Overall Proficiency Level</label>
+      <select id="skill-level" name="skill-level">
+        <option value="">Select level</option>
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+        <option value="expert">Expert</option>
+      </select>
+    </div>
+  </fieldset>
+
+  <!-- Certifications -->
+  <fieldset id="certification-section">
+    <legend>Certifications</legend>
+
+    <div class="entry-block">
+      <button type="button" class="remove-btn" onclick="removeBlock(this)">Remove</button>
+      <h4>Certification Entry</h4>
+      <div class="row">
+        <div class="field">
+          <label>Certification Name</label>
+          <input type="text" name="cert-name[]" placeholder="AWS Certified Developer">
+        </div>
+        <div class="field">
+          <label>Issuing Organization</label>
+          <input type="text" name="cert-org[]" placeholder="Amazon Web Services">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>Issue Date</label>
+          <input type="date" name="cert-date[]">
+        </div>
+        <div class="field">
+          <label>Credential URL</label>
+          <input type="url" name="cert-url[]" placeholder="https://credential-link.com">
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="add-btn" onclick="addBlock('certification-section', certificationTemplate)">+ Add Certification</button>
+  </fieldset>
+
+  <!-- Languages -->
+  <fieldset>
+    <legend>Languages</legend>
+    <div class="row">
+      <div class="field">
+        <label for="lang1">Language 1</label>
+        <input type="text" id="lang1" name="lang1" placeholder="English">
+      </div>
+      <div class="field">
+        <label for="lang1-level">Proficiency</label>
+        <select id="lang1-level" name="lang1-level">
+          <option value="">Select</option>
+          <option value="basic">Basic</option>
+          <option value="conversational">Conversational</option>
+          <option value="fluent">Fluent</option>
+          <option value="native">Native</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- References -->
+  <fieldset>
+    <legend>References</legend>
+    <div class="checkbox-row" style="margin-bottom:10px;">
+      <input type="checkbox" id="ref-on-request" name="ref-on-request">
+      <label for="ref-on-request" style="margin:0;">Available upon request</label>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="ref-name">Reference Name</label>
+        <input type="text" id="ref-name" name="ref-name" placeholder="Jane Smith">
+      </div>
+      <div class="field">
+        <label for="ref-contact">Reference Contact</label>
+        <input type="text" id="ref-contact" name="ref-contact" placeholder="Email or phone">
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- Attachment -->
+  <fieldset>
+    <legend>Attachment</legend>
+    <div class="field">
+      <label for="resume-file">Upload Existing Resume (optional)</label>
+      <input type="file" id="resume-file" name="resume-file" accept=".pdf,.doc,.docx">
+    </div>
+  </fieldset>
+
+  <button type="submit">Submit Resume</button>
+
+</form>
+
+<script>
+  const educationTemplate = `
+    <div class="entry-block">
+      <button type="button" class="remove-btn" onclick="removeBlock(this)">Remove</button>
+      <h4>Education Entry</h4>
+      <div class="row">
+        <div class="field">
+          <label>School / University</label>
+          <input type="text" name="edu-school[]" placeholder="XYZ University">
+        </div>
+        <div class="field">
+          <label>Degree</label>
+          <input type="text" name="edu-degree[]" placeholder="B.Sc. Computer Science">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>Start Date</label>
+          <input type="date" name="edu-start[]">
+        </div>
+        <div class="field">
+          <label>End Date</label>
+          <input type="date" name="edu-end[]">
+        </div>
+        <div class="field">
+          <label>Grade / GPA</label>
+          <input type="text" name="edu-grade[]" placeholder="3.8 / 4.0">
+        </div>
+      </div>
+    </div>`;
+
+  const experienceTemplate = `
+    <div class="entry-block">
+      <button type="button" class="remove-btn" onclick="removeBlock(this)">Remove</button>
+      <h4>Experience Entry</h4>
+      <div class="row">
+        <div class="field">
+          <label>Company</label>
+          <input type="text" name="exp-company[]" placeholder="ABC Corp">
+        </div>
+        <div class="field">
+          <label>Job Title</label>
+          <input type="text" name="exp-title[]" placeholder="Software Engineer">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>Start Date</label>
+          <input type="date" name="exp-start[]">
+        </div>
+        <div class="field">
+          <label>End Date</label>
+          <input type="date" name="exp-end[]">
+        </div>
+        <div class="field checkbox-row">
+          <input type="checkbox" name="exp-current[]">
+          <label style="margin:0;">I currently work here</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Description / Responsibilities</label>
+        <textarea name="exp-desc[]" placeholder="Describe your role and achievements..."></textarea>
+      </div>
+    </div>`;
+
+  const certificationTemplate = `
+    <div class="entry-block">
+      <button type="button" class="remove-btn" onclick="removeBlock(this)">Remove</button>
+      <h4>Certification Entry</h4>
+      <div class="row">
+        <div class="field">
+          <label>Certification Name</label>
+          <input type="text" name="cert-name[]" placeholder="AWS Certified Developer">
+        </div>
+        <div class="field">
+          <label>Issuing Organization</label>
+          <input type="text" name="cert-org[]" placeholder="Amazon Web Services">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label>Issue Date</label>
+          <input type="date" name="cert-date[]">
+        </div>
+        <div class="field">
+          <label>Credential URL</label>
+          <input type="url" name="cert-url[]" placeholder="https://credential-link.com">
+        </div>
+      </div>
+    </div>`;
+
+  function addBlock(sectionId, template) {
+    const section = document.getElementById(sectionId);
+    const addBtn = section.querySelector('.add-btn');
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = template;
+    section.insertBefore(wrapper.firstElementChild, addBtn);
+  }
+
+  function removeBlock(btn) {
+    const block = btn.closest('.entry-block');
+    const section = block.parentElement;
+    const blocks = section.querySelectorAll('.entry-block');
+    if (blocks.length > 1) {
+      block.remove();
+    } else {
+      alert("At least one entry must remain.");
+    }
+  }
+
+  document.getElementById('resume-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Resume submitted! (Connect this form to your backend to save the data.)');
+  });
+</script>
+
+</body>
+</html>

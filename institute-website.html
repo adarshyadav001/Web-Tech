@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<!-- 
+  Project: Vantage Institute of Technology - Official Website
+  Description: A single-file, responsive HTML5 website for an educational institute.
+  Author: Expert Web Developer (Instructor Demo)
+  Notes: All CSS is written internally inside the <style> tag as required.
+         The code is heavily commented so beginners can follow the structure.
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABES Engineering College | Shaping Tomorrow's Engineers</title>
+
+    <style>
+        /* ============================================= 
+           1. CSS RESET & BASE SETUP
+           ============================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* makes width/height calculations predictable */
+        }
+
+        /* Root color variables - Professional Blue / White / Gray theme */
+        :root {
+            --primary-blue: #0a3d62;
+            /* deep navy blue - header/footer */
+            --accent-blue: #1e6091;
+            /* medium blue - links, buttons */
+            --light-blue: #eaf2f8;
+            /* very light blue - section backgrounds */
+            --white: #ffffff;
+            --gray-light: #f4f5f7;
+            /* light gray background */
+            --gray-medium: #6b7280;
+            /* medium gray text */
+            --gray-dark: #2d3748;
+            /* dark gray text/headings */
+            --border-gray: #d9dee3;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            /* smooth scrolling when nav links are clicked */
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: var(--gray-dark);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray-medium);
+            max-width: 650px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* ============================================= 
+           2. HEADER SECTION
+           ============================================= */
+        header.site-header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 15px 0;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Logo placeholder - a simple styled circle acting as the institute logo */
+        .logo-placeholder {
+            width: 60px;
+            height: 60px;
+            background-color: var(--white);
+            color: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            border: 3px solid var(--accent-blue);
+        }
+
+        .brand-text h1 {
+            font-size: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-text p {
+            font-size: 0.85rem;
+            color: #cfe2f3;
+            font-style: italic;
+        }
+
+        /* ============================================= 
+           3. NAVIGATION BAR
+           ============================================= */
+        nav.main-nav {
+            background-color: var(--accent-blue);
+        }
+
+        .nav-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-list li a {
+            display: block;
+            color: var(--white);
+            padding: 14px 22px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Hover effect required by the brief */
+        .nav-list li a:hover {
+            background-color: var(--white);
+            color: var(--primary-blue);
+        }
+
+        /* ============================================= 
+           4. HERO SECTION
+           ============================================= */
+        .hero {
+            background: linear-gradient(rgba(10, 61, 98, 0.85), rgba(10, 61, 98, 0.85)),
+                url('https://via.placeholder.com/1600x600/1e6091/ffffff?text=Institute+Campus+Banner');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h2 {
+            font-size: 2.6rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            color: #eaf2f8;
+        }
+
+        .btn-apply {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--primary-blue);
+            padding: 14px 34px;
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: 6px;
+            border: 2px solid var(--white);
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-apply:hover {
+            background-color: transparent;
+            color: var(--white);
+        }
+
+        /* ============================================= 
+           5. ABOUT SECTION
+           ============================================= */
+        .about-section {
+            background-color: var(--white);
+        }
+
+        .about-content {
+            max-width: 850px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+            color: var(--gray-dark);
+            font-size: 1.05rem;
+        }
+
+        /* ============================================= 
+           6. DEPARTMENTS SECTION (CARD LAYOUT)
+           ============================================= */
+        .departments-section {
+            background-color: var(--gray-light);
+        }
+
+        .dept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .dept-card {
+            background-color: var(--white);
+            border: 1px solid var(--border-gray);
+            border-radius: 8px;
+            padding: 22px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        /* Hover effect on department cards */
+        .dept-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px rgba(10, 61, 98, 0.15);
+        }
+
+        .dept-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--accent-blue);
+            padding-bottom: 8px;
+        }
+
+        .dept-card table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 0.92rem;
+        }
+
+        .dept-card table td {
+            padding: 4px 2px;
+            vertical-align: top;
+        }
+
+        .dept-card table td.label {
+            font-weight: 600;
+            color: var(--gray-dark);
+            width: 45%;
+        }
+
+        .dept-card .dept-desc {
+            font-size: 0.92rem;
+            color: var(--gray-medium);
+            margin-top: 8px;
+        }
+
+        /* ============================================= 
+           7. FACILITIES SECTION
+           ============================================= */
+        .facilities-section {
+            background-color: var(--white);
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .facility-item {
+            background-color: var(--light-blue);
+            padding: 30px 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .facility-item:hover {
+            background-color: var(--accent-blue);
+            color: var(--white);
+        }
+
+        .facility-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        /* ============================================= 
+           8. NOTICE BOARD SECTION
+           ============================================= */
+        .notice-section {
+            background-color: var(--gray-light);
+        }
+
+        .notice-list {
+            max-width: 750px;
+            margin: 0 auto;
+            background-color: var(--white);
+            border: 1px solid var(--border-gray);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .notice-list li {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-gray);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .notice-list li:last-child {
+            border-bottom: none;
+        }
+
+        .notice-list li:hover {
+            background-color: var(--light-blue);
+        }
+
+        .notice-date {
+            color: var(--accent-blue);
+            font-weight: 600;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        /* ============================================= 
+           9. CONTACT SECTION
+           ============================================= */
+        .contact-section {
+            background-color: var(--white);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info p {
+            margin-bottom: 14px;
+            font-size: 1rem;
+        }
+
+        .contact-info strong {
+            color: var(--primary-blue);
+        }
+
+        .map-placeholder {
+            background-color: var(--gray-light);
+            border: 2px dashed var(--border-gray);
+            border-radius: 8px;
+            min-height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-medium);
+            font-weight: 600;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Contact Form Styling */
+        .contact-form {
+            background-color: var(--gray-light);
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border-gray);
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: 2px solid var(--accent-blue);
+            border-color: var(--accent-blue);
+        }
+
+        .btn-submit {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--accent-blue);
+        }
+
+        /* ============================================= 
+           10. FOOTER SECTION
+           ============================================= */
+        footer.site-footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            background-color: var(--accent-blue);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--white);
+            color: var(--primary-blue);
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            color: #cfe2f3;
+        }
+
+        /* ============================================= 
+           11. RESPONSIVE LAYOUT (MEDIA QUERIES)
+           ============================================= */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h2 {
+                font-size: 1.9rem;
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 70px 15px;
+            }
+
+            .btn-apply {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============================================= 
+         HEADER: Logo, Institute Name, Tagline
+         ============================================= -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">
+                <!-- Logo placeholder -->
+                <div class="logo-placeholder">VIT</div>
+                <div class="brand-text">
+                    <h1>Vantage Institute of Technology</h1>
+                    <p>Shaping Tomorrow's Engineers, Today</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================= 
+         NAVIGATION BAR
+         ============================================= -->
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#departments">Departments</a></li>
+                <li><a href="#admissions">Admissions</a></li>
+                <li><a href="#faculty">Faculty</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ============================================= 
+         HERO SECTION
+         ============================================= -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Welcome to Vantage Institute of Technology</h2>
+            <p>
+                A premier institution dedicated to academic excellence, innovation, and
+                holistic development. Join a community of learners and future leaders
+                shaping the world through technology and knowledge.
+            </p>
+            <a href="#admissions" class="btn-apply">Apply Now</a>
+        </div>
+    </section>
+
+    <!-- ============================================= 
+         ABOUT INSTITUTE SECTION
+         ============================================= -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title">About Our Institute</h2>
+            <div class="about-content">
+                <p>
+                    Vantage Institute of Technology (VIT) was established with a vision to provide
+                    world-class technical education to students from all walks of life. Over the
+                    years, we have grown into a multi-disciplinary institute offering undergraduate
+                    and postgraduate programs across engineering and management streams.
+                </p>
+                <p>
+                    Our campus is equipped with modern laboratories, experienced faculty, and a
+                    vibrant learning environment that encourages research, innovation, and
+                    industry collaboration. We believe in nurturing not just skilled engineers,
+                    but responsible citizens ready to contribute to society.
+                </p>
+                <p>
+                    With a strong emphasis on placements, extracurricular activities, and
+                    industry-academia partnerships, VIT continues to be a preferred destination
+                    for students aspiring to build a successful career in technology and management.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================= 
+         DEPARTMENTS SECTION (Card Layout)
+         ============================================= -->
+    <section class="departments-section" id="departments">
+        <div class="container">
+            <h2 class="section-title">Our Departments</h2>
+            <p class="section-subtitle">
+                Explore our diverse range of departments, each equipped with dedicated
+                faculty and state-of-the-art laboratories.
+            </p>
+
+            <div class="dept-grid">
+
+                <!-- Department Card 1: Computer Science & Engineering -->
+                <article class="dept-card">
+                    <h3>Computer Science &amp; Engineering</h3>
+                    <table>
+                        <tr>
+                            <td class="label">HOD:</td>
+                            <td>Dr. Ramesh Kulkarni</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Faculty Members:</td>
+                            <td>32</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Students:</td>
+                            <td>640</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Laboratories:</td>
+                            <td>Programming Lab, AI/ML Lab, Networking Lab, Software Engineering Lab</td>
+                        </tr>
+                    </table>
+                    <p class="dept-desc">
+                        Focuses on software development, artificial intelligence, and systems
+                        design, preparing students for careers in the global tech industry.
+                    </p>
+                </article>
+
+                <!-- Department Card 2: Information Technology -->
+                <article class="dept-card">
+                    <h3>Information Technology</h3>
+                    <table>
+                        <tr>
+                            <td class="label">HOD:</td>
+                            <td>Dr. Sunita Rao</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Faculty Members:</td>
+                            <td>26</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Students:</td>
+                            <td>480</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Laboratories:</td>
+                            <td>Database Lab, Cloud Computing Lab, Cybersecurity Lab</td>
+                        </tr>
+                    </table>
+                    <p class="dept-desc">
+                        Trains students in database management, cloud technologies, and
+                        cybersecurity to meet growing industry demands.
+                    </p>
+                </article>
+
+                <!-- Department Card 3: Mechanical Engineering -->
+                <article class="dept-card">
+                    <h3>Mechanical Engineering</h3>
+                    <table>
+                        <tr>
+                            <td class="label">HOD:</td>
+                            <td>Dr. Anil Deshpande</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Faculty Members:</td>
+                            <td>28</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Students:</td>
+                            <td>520</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Laboratories:</td>
+                            <td>Thermodynamics Lab, CAD/CAM Lab, Manufacturing Lab</td>
+                        </tr>
+                    </table>
+                    <p class="dept-desc">
+                        Covers design, manufacturing, and thermal engineering with hands-on
+                        exposure to modern industrial machinery.
+                    </p>
+                </article>
+
+                <!-- Department Card 4: Civil Engineering -->
+                <article class="dept-card">
+                    <h3>Civil Engineering</h3>
+                    <table>
+                        <tr>
+                            <td class="label">HOD:</td>
+                            <td>Dr. Meera Joshi</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Faculty Members:</td>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Students:</td>
+                            <td>410</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Laboratories:</td>
+                            <td>Structural Lab, Surveying Lab, Geotechnical Lab</td>
+                        </tr>
+                    </table>
+                    <p class="dept-desc">
+                        Prepares students for careers in construction, infrastructure
+                        development, and urban planning.
+                    </p>
+                </article>
+
+                <!-- Department Card 5: Electrical Engineering -->
+                <article class="dept-card">
+                    <h3>Electrical Engineering</h3>
+                    <table>
+                        <tr>
+                            <td class="label">HOD:</td>
+                            <td>Dr. Prakash Nair</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Faculty Members:</td>
+                            <td>22</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Students:</td>
+                            <td>360</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Laboratories:</td>
+                            <td>Power Systems Lab, Electrical Machines Lab, Control Systems Lab</td>
+                        </tr>
+                    </table>
+                    <p class="dept-desc">
+                        Focuses on power generation, distribution, and control systems for
+                        modern electrical infrastructure.
+                    </p>
+                </article>
+
+                <!-- Department Card 6: Electronics & Communication Engineering -->
+                <article class="dept-card">
+                    <h3>Electronics &amp; Communication Engineering</h3>
+                    <table>
+                        <tr>
+                            <td class="label">HOD:</td>
+                            <td>Dr. Kavita Iyer</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Faculty Members:</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Students:</td>
+                            <td>430</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Laboratories:</td>
+                            <td>VLSI Lab, Communication Systems Lab, Embedded Systems Lab</td>
+                        </tr>
+                    </table>
+                    <p class="dept-desc">
+                        Provides expertise in communication systems, embedded design, and
+                        semiconductor technologies.
+                    </p>
+                </article>
+
+                <!-- Department Card 7: Management Studies -->
+                <article class="dept-card">
+                    <h3>Management Studies</h3>
+                    <table>
+                        <tr>
+                            <td class="label">HOD:</td>
+                            <td>Dr. Ashok Verma</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Faculty Members:</td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Students:</td>
+                            <td>300</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Laboratories:</td>
+                            <td>Business Analytics Lab, Finance Simulation Lab</td>
+                        </tr>
+                    </table>
+                    <p class="dept-desc">
+                        Offers business administration programs focused on leadership,
+                        finance, marketing, and analytics.
+                    </p>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================= 
+         FACILITIES SECTION
+         ============================================= -->
+    <section class="facilities-section" id="facilities">
+        <div class="container">
+            <h2 class="section-title">Campus Facilities</h2>
+            <p class="section-subtitle">
+                Our campus offers a wide range of facilities to ensure a comfortable and
+                productive learning experience.
+            </p>
+            <div class="facilities-grid">
+                <div class="facility-item">
+                    <div class="facility-icon">📚</div>
+                    <h3>Library</h3>
+                    <p>Over 50,000 books, journals, and digital resources.</p>
+                </div>
+                <div class="facility-item">
+                    <div class="facility-icon">💻</div>
+                    <h3>Computer Labs</h3>
+                    <p>High-speed internet and modern computing systems.</p>
+                </div>
+                <div class="facility-item">
+                    <div class="facility-icon">🖥️</div>
+                    <h3>Smart Classrooms</h3>
+                    <p>Digital boards and interactive learning tools.</p>
+                </div>
+                <div class="facility-item">
+                    <div class="facility-icon">🏟️</div>
+                    <h3>Sports Complex</h3>
+                    <p>Indoor and outdoor facilities for various sports.</p>
+                </div>
+                <div class="facility-item">
+                    <div class="facility-icon">🏠</div>
+                    <h3>Hostel</h3>
+                    <p>Separate hostels for boys and girls with modern amenities.</p>
+                </div>
+                <div class="facility-item">
+                    <div class="facility-icon">🍽️</div>
+                    <h3>Cafeteria</h3>
+                    <p>Hygienic and affordable food options for students and staff.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================= 
+         NOTICE BOARD SECTION
+         ============================================= -->
+    <section class="notice-section" id="notice">
+        <div class="container">
+            <h2 class="section-title">Notice Board</h2>
+            <p class="section-subtitle">Stay updated with the latest announcements from the institute.</p>
+            <ul class="notice-list">
+                <li>
+                    <span>Admissions open for the Academic Year 2026-27</span>
+                    <span class="notice-date">20 Jul 2026</span>
+                </li>
+                <li>
+                    <span>Mid-semester examination schedule released</span>
+                    <span class="notice-date">15 Jul 2026</span>
+                </li>
+                <li>
+                    <span>Annual Tech Fest "Innovate 2026" registrations open</span>
+                    <span class="notice-date">10 Jul 2026</span>
+                </li>
+                <li>
+                    <span>Campus placement drive by leading IT companies</span>
+                    <span class="notice-date">05 Jul 2026</span>
+                </li>
+                <li>
+                    <span>Library timings extended during examination period</span>
+                    <span class="notice-date">01 Jul 2026</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================= 
+         CONTACT SECTION
+         ============================================= -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">
+                Have questions about admissions or programs? Reach out to us or visit our campus.
+            </p>
+
+            <div class="contact-wrapper">
+
+                <!-- Left column: Address, Phone, Email, Map -->
+                <div class="contact-details">
+                    <div class="contact-info">
+                        <p><strong>Address:</strong> Vantage Institute of Technology, Sector 12, Knowledge Park,
+                            Ghaziabad, Uttar Pradesh, India - 201001</p>
+                        <p><strong>Phone:</strong> +91 120 456 7890</p>
+                        <p><strong>Email:</strong> info@vantageinstitute.edu.in</p>
+                    </div>
+                    <!-- Google Map placeholder -->
+                    <div class="map-placeholder">
+                        [ Google Map Placeholder - Embed Map Here ]
+                    </div>
+                </div>
+
+                <!-- Right column: Contact Form -->
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Write your message here"
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================= 
+         FOOTER SECTION
+         ============================================= -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#" target="_blank" rel="noopener">Facebook</a>
+                <a href="#" target="_blank" rel="noopener">Twitter</a>
+                <a href="#" target="_blank" rel="noopener">Instagram</a>
+                <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="#" target="_blank" rel="noopener">YouTube</a>
+            </div>
+            <p class="footer-copy">
+                &copy; 2026 Vantage Institute of Technology. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
